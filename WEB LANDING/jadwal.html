@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jadwal Ramadan | HANABIRA48</title>
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1994209926894043" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deepNight: '#020617',
+                        emeraldGold: '#059669',
+                        goldAccent: '#fbbf24',
+                        glass: 'rgba(255, 255, 255, 0.05)',
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Amiri', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="assets/js/style.js"></script> 
+    <style>
+        body {
+            background: radial-gradient(circle at center top, #064e3b, #020617, #000000);
+            min-height: 100vh;
+            color: white; 
+        }
+    </style>
+</head>
+<body class="relative text-white antialiased overflow-x-hidden">
+
+    <img src="assets/images/lampu.png" alt="Lampu Kanan" class="fixed -top-10 -right-6 md:right-0 w-28 md:w-48 z-40 pointer-events-none lantern-swing drop-shadow-[0_0_15px_rgba(251,191,36,0.3)]">
+    <img src="assets/images/lampu.png" alt="Lampu Kiri" class="fixed -top-10 -left-6 md:left-0 w-28 md:w-48 z-40 pointer-events-none lantern-swing drop-shadow-[0_0_15px_rgba(251,191,36,0.3)]" style="animation-delay: 1.5s;">
+
+    <div id="ramadan-container"></div>
+
+    <nav class="fixed w-full z-40 top-0 start-0 glass-panel transition-all duration-300 border-b border-emerald-900/30">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 pt-6 md:pt-4">
+            <a href="index.html" class="flex items-center space-x-2 md:space-x-3 rtl:space-x-reverse group relative z-50">
+                <i class="fas fa-moon text-goldAccent"></i>
+                <span class="self-center text-xl md:text-2xl font-bold whitespace-nowrap tracking-wide">HANABIRA<span class="text-emerald-500">48</span></span>
+            </a>
+            
+            <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse relative z-50">
+                <button id="mobile-menu-btn" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-emerald-100 rounded-lg md:hidden hover:bg-emerald-800/50 focus:outline-none transition-colors">
+                    <span class="sr-only">Open main menu</span>
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+
+            <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 transition-all duration-300 ease-in-out relative z-50" id="navbar-sticky">
+                <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-emerald-800 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 bg-deepNight/95 md:bg-transparent backdrop-blur-xl md:backdrop-blur-none shadow-xl md:shadow-none">
+                    <li><a href="https://hanabira48.site" class="nav-link block py-3 px-4 text-emerald-100 rounded hover:bg-emerald-800/30 md:hover:bg-transparent md:hover:text-emerald-400 md:p-0 transition-colors">Beranda</a></li>
+                    <li><a href="#" class="nav-link block py-3 px-4 text-white bg-emerald-700 rounded md:bg-transparent md:text-goldAccent md:p-0" aria-current="page">Jadwal Theater</a></li>
+                    <li><a href="index.html#langganan" class="nav-link block py-3 px-4 text-emerald-100 rounded hover:bg-emerald-800/30 md:hover:bg-transparent md:hover:text-emerald-400 md:p-0 transition-colors">Langganan</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative pt-32 pb-12 md:pt-40 md:pb-20 overflow-hidden z-0">
+        <div class="absolute inset-0 z-[-1]">
+            <img src="https://images.unsplash.com/photo-1596627689906-6f81e7d0576f?q=80&w=2070&auto=format&fit=crop" alt="Ramadan Lanterns" class="w-full h-full object-cover opacity-30 scale-105">
+            <div class="absolute inset-0 bg-gradient-to-b from-deepNight/60 via-deepNight/80 to-transparent"></div>
+        </div>
+
+        <div class="container mx-auto px-4 md:px-6 text-center z-10 relative">
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-4 leading-tight tracking-tight drop-shadow-2xl">
+                Jadwal Theater <span class="gradient-text">Ramadan</span>
+            </h1>
+            <p class="text-gray-200 text-sm md:text-lg max-w-2xl mx-auto font-medium">
+                Saksikan keseruan show spesial sambil menunggu waktu berbuka atau setelah tarawih.
+            </p>
+        </div>
+    </header>
+
+    <section class="py-10 relative z-10 bg-transparent min-h-screen">
+        <div class="container mx-auto px-4 md:px-6">
+            
+            <div class="flex items-center justify-between mb-8 border-b border-emerald-900/50 pb-4">
+                <h2 class="text-xl font-bold text-white"><i class="far fa-calendar-alt mr-2 text-goldAccent"></i> Jadwal Terbaru</h2>
+            </div>
+
+            <div id="schedule-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
+                <div class="col-span-1 md:col-span-2 lg:col-span-3 text-center py-12">
+                    <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-emerald-500 mb-4"></div>
+                    <p class="text-gray-400 text-sm">Menghubungkan ke database...</p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <footer class="bg-deepNight/80 border-t border-emerald-900/30 pt-12 pb-8 mt-10 backdrop-blur-md relative z-10">
+        <div class="container mx-auto px-6 text-center">
+            <div class="text-gray-500 text-xs">
+                &copy; 2026 HANABIRA48. <a href="https://hanabira48.site" class="text-emerald-400 hover:underline">Kembali ke Beranda</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pocketbase/0.21.1/pocketbase.umd.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

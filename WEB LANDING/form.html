@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Langganan | HANABIRA48</title>
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deepNight: '#020617',
+                        emeraldGold: '#059669',
+                        goldAccent: '#fbbf24',
+                        glass: 'rgba(255, 255, 255, 0.05)',
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script src="assets/js/style.js"></script> 
+    
+    <style>
+        body {
+            background: radial-gradient(circle at center top, #064e3b, #020617, #000000);
+            min-height: 100vh;
+            color: white; 
+        }
+        /* Custom File Input Style */
+        input[type="file"]::file-selector-button {
+            margin-right: 16px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: none;
+            background: #10b981; /* Emerald */
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background .2s ease-in-out;
+        }
+        input[type="file"]::file-selector-button:hover {
+            background: #059669;
+        }
+    </style>
+</head>
+<body class="relative text-white antialiased overflow-x-hidden">
+
+    <img src="assets/images/lampu.png" alt="Lampu Kanan" class="fixed -top-10 -right-6 md:right-0 w-28 md:w-48 z-40 pointer-events-none lantern-swing drop-shadow-[0_0_15px_rgba(251,191,36,0.3)]">
+    <img src="assets/images/lampu.png" alt="Lampu Kiri" class="fixed -top-10 -left-6 md:left-0 w-28 md:w-48 z-40 pointer-events-none lantern-swing drop-shadow-[0_0_15px_rgba(251,191,36,0.3)]" style="animation-delay: 1.5s;">
+
+    <div id="ramadan-container"></div>
+
+    <nav class="fixed w-full z-40 top-0 start-0 glass-panel border-b border-emerald-900/30">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 pt-6 md:pt-4">
+            <a href="https://hanabira48.site" class="flex items-center space-x-2 group relative z-50">
+                <i class="fas fa-arrow-left text-emerald-400 group-hover:-translate-x-1 transition-transform"></i>
+                <span class="font-bold text-lg hover:text-emerald-400 transition-colors">Kembali ke Beranda</span>
+            </a>
+            <span class="text-sm text-gray-400 hidden md:block relative z-50">Langkah 1 dari 2: Pembayaran</span>
+        </div>
+    </nav>
+
+    <section class="min-h-screen flex items-center justify-center pt-24 pb-12 px-4 relative z-10">
+        
+        <div id="form-loading" class="text-center">
+            <i class="fas fa-circle-notch fa-spin text-4xl text-emerald-500 mb-4"></i>
+            <p class="text-gray-400">Memeriksa ketersediaan formulir...</p>
+        </div>
+
+        <div id="form-closed-state" class="hidden text-center w-full max-w-lg animate-fade-in-down">
+            <div class="glass-panel p-10 rounded-3xl border-t-4 border-red-500 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-full bg-red-500/5 z-0"></div>
+                <div class="relative z-10">
+                    <div class="inline-block p-4 rounded-full bg-red-500/20 mb-6">
+                        <i class="fas fa-store-slash text-5xl text-red-400"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold text-white mb-3">Pendaftaran Ditutup</h2>
+                    <p class="text-gray-300 mb-8 leading-relaxed">
+                        Mohon maaf, formulir pendaftaran saat ini sedang <strong>dinonaktifkan</strong> sementara waktu.
+                        Pendaftaran akan dibuka tanggal 1 - 5 Setiap Bulannya. (Jika Slot Masih Tersedia)
+                    </p>
+                    <a href="https://hanabira48.site" class="inline-block px-8 py-3 bg-white/10 hover:bg-white/20 text-white rounded-xl font-bold transition border border-white/20 w-full md:w-auto">
+                        <i class="fas fa-home mr-2"></i> Kembali ke Beranda
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="form-container" class="glass-panel w-full max-w-2xl p-8 md:p-10 rounded-3xl shadow-2xl relative overflow-hidden animate-fade-in-down hidden">
+            
+            <div class="text-center mb-10">
+                <div class="inline-block p-3 rounded-full bg-emerald-500/20 mb-4 shadow-[0_0_15px_rgba(16,185,129,0.2)]">
+                    <i class="fas fa-praying-hands text-3xl text-emerald-400"></i>
+                </div>
+                <h1 class="text-3xl md:text-4xl font-bold mb-2">Formulir Langganan</h1>
+                <p class="text-gray-300">Bergabunglah dengan Member "Oshi Setia" di Bulan Suci Ini.</p>
+            </div>
+
+            <form id="subscription-form" class="space-y-6">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label for="nama" class="text-sm font-semibold text-emerald-200">Nama Lengkap</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                                <i class="fas fa-user text-gray-500"></i>
+                            </div>
+                            <input type="text" id="nama" name="nama" required class="bg-deepNight/50 border border-gray-600 text-white text-sm rounded-xl focus:ring-emerald-500 focus:border-emerald-500 block w-full ps-10 p-3 placeholder-gray-500 transition-colors" placeholder="Masukkan nama kamu">
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label for="whatsapp" class="text-sm font-semibold text-emerald-200">Nomor WhatsApp</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                                <i class="fab fa-whatsapp text-gray-500"></i>
+                            </div>
+                            <input type="tel" id="whatsapp" name="whatsapp" required class="bg-deepNight/50 border border-gray-600 text-white text-sm rounded-xl focus:ring-emerald-500 focus:border-emerald-500 block w-full ps-10 p-3 placeholder-gray-500 transition-colors" placeholder="08xxxxxxxxxx">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <label for="email" class="text-sm font-semibold text-emerald-200">Alamat Email</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                            <i class="fas fa-envelope text-gray-500"></i>
+                        </div>
+                        <input type="email" id="email" name="email" required class="bg-deepNight/50 border border-gray-600 text-white text-sm rounded-xl focus:ring-emerald-500 focus:border-emerald-500 block w-full ps-10 p-3 placeholder-gray-500 transition-colors" placeholder="contoh@email.com">
+                    </div>
+                </div>
+
+                <hr class="border-gray-700 my-6">
+
+                <div class="bg-emerald-900/20 rounded-2xl p-6 border border-emerald-500/20 text-center">
+                    <h3 class="text-xl font-bold text-white mb-2">Instruksi Pembayaran</h3>
+                    <p class="text-gray-300 text-sm mb-6">Silakan transfer sebesar <span class="text-goldAccent font-bold text-lg">Rp 25.000</span> dengan cara scan QRIS di bawah ini:</p>
+                    
+                    <div class="bg-white p-4 rounded-xl inline-block shadow-lg mb-4">
+                        <img src="https://res.cloudinary.com/dnriiwrmn/image/upload/v1766391728/HANABIRA48_c2syrf.png" alt="Scan QRIS HANABIRA48" class="w-70 h-70 md:w-70 md:h-70 object-contain mx-auto">
+                        <p class="text-black font-bold mt-2 text-sm">HANABIRA48 Official</p>
+                    </div>
+
+                    <div class="text-xs text-emerald-200 mt-2">
+                        <i class="fas fa-shield-alt mr-1"></i> Pembayaran Aman & Terverifikasi
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <label for="bukti" class="text-sm font-semibold text-emerald-200">Upload Bukti Transfer</label>
+                    <div class="relative">
+                        <input type="file" id="bukti" name="bukti" accept="image/*" required class="block w-full text-sm text-gray-400
+                            file:mr-4 file:py-3 file:px-6
+                            file:rounded-xl file:border-0
+                            file:text-sm file:font-semibold
+                            file:bg-emerald-600 file:text-white
+                            hover:file:bg-emerald-700
+                            bg-deepNight/50 border border-gray-600 rounded-xl cursor-pointer
+                        ">
+                    </div>
+                    <p class="text-xs text-gray-500 mt-1">Format: JPG, PNG. Maks: 2MB.</p>
+                </div>
+
+                <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white text-lg font-bold shadow-lg shadow-emerald-500/40 transition transform hover:scale-[1.02] active:scale-95 mt-4">
+                    <i class="fas fa-paper-plane mr-2"></i> Kirim Bukti & Aktifkan Paket
+                </button>
+
+            </form>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pocketbase/0.21.1/pocketbase.umd.min.js"></script>
+    
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

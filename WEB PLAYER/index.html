@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>HANABIRA48 | Ramadan Theater</title>
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+</head>
+
+<body>
+
+    <div class="ramadan-bg"></div>
+    <div id="star-container"></div>
+    
+    <img src="assets/images/lampu.png" class="decor-hanging" alt="Lampu Gantung">
+    <img src="assets/images/lantern.png" class="decor-standing" alt="Lentera">
+
+    <div id="login-wrapper" class="view-center">
+        <div class="glass-card login-anim">
+            <div class="card-header">
+                <img src="assets/images/logo.png" alt="Logo" class="logo-main">
+                <p class="subtitle">RAMADAN LIVE STAGE ACCESS</p>
+            </div>
+
+            <div class="input-group">
+                <div class="input-icon-wrap">
+                    <i class="fas fa-ticket-alt"></i>
+                    <input type="text" id="credential-input" placeholder="Masukkan Email Tiket" autocomplete="off">
+                </div>
+            </div>
+            
+            <a href="https://wa.me/628567898135" target="_blank" class="help-link">
+                <i class="fab fa-whatsapp"></i> Bantuan Tiket?
+            </a>
+
+            <div class="btn-container">
+                <button id="submit-credential" class="btn-main glow-effect">
+                    <span>MASUK STAGE</span> <i class="fas fa-arrow-right"></i>
+                </button>
+                <button id="reset-fingerprint-button" class="btn-ghost">
+                    <i class="fas fa-sync-alt"></i> Reset Device
+                </button>
+            </div>
+            
+            <p id="credential-error-message" class="error-text"></p>
+            <div class="card-footer">
+                <small>© 2026 Hanabira48. Ramadan Edition.</small>
+            </div>
+        </div>
+    </div>
+
+    <div id="subscription-modal" class="modal-backdrop hidden">
+        <div class="glass-card modal-anim">
+            <div class="icon-circle-success"><i class="fas fa-check"></i></div>
+            <h2>AKSES DITERIMA</h2>
+            <p class="modal-desc">Selamat menunaikan ibadah puasa.</p>
+            
+            <div class="ticket-details">
+                <div class="detail-row">
+                    <span>Terdaftar</span>
+                    <strong id="reg-date">-</strong>
+                </div>
+                <div class="detail-row">
+                    <span>Berakhir</span>
+                    <strong id="exp-date">-</strong>
+                </div>
+                <div class="detail-row highlight">
+                    <span>Sisa Durasi</span>
+                    <strong><span id="days-left">0</span> Hari</strong>
+                </div>
+            </div>
+
+            <button id="close-modal-button" class="btn-main full-width">
+                Masuk Dashboard <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <div id="admin-toast-container" class="toast-container hidden">
+        <div class="glass-panel toast-content">
+            <div class="toast-icon">
+                <i class="fas fa-bullhorn"></i>
+            </div>
+            <div class="toast-text">
+                <h4 id="toast-title">PENGUMUMAN ADMIN</h4>
+                <p id="toast-message">Pesan admin akan muncul disini...</p>
+            </div>
+            <div class="toast-progress">
+                <div class="progress-bar" id="toast-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="schedule-detail-modal" class="modal-backdrop hidden" style="z-index: 2000;">
+        <div class="glass-card modal-anim" style="max-width: 450px; text-align: left; padding: 25px;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:15px;">
+                <h3 style="color:var(--secondary); font-size:1.2rem; margin:0;">Detail Show</h3>
+                <button id="close-detail-btn" style="background:none; border:none; color:white; font-size:1.5rem; cursor:pointer;"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div id="detail-content-area" style="max-height: 70vh; overflow-y: auto; padding-right: 5px;">
+                <img id="modal-img" src="" alt="Show Image" style="width:100%; border-radius:10px; margin-bottom:15px; aspect-ratio:16/9; object-fit:cover; border:1px solid rgba(255,255,255,0.1);">
+                
+                <h2 id="modal-title" style="color:white; font-size:1.3rem; margin-bottom:5px;">-</h2>
+                <p id="modal-date" style="color:var(--text-muted); font-size:0.9rem; margin-bottom:15px;"><i class="far fa-clock"></i> -</p>
+                
+                <div style="background:rgba(255,255,255,0.05); padding:15px; border-radius:10px; margin-bottom:15px; border:1px solid rgba(255,255,255,0.05);">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:0.9rem;">
+                        <span style="color:var(--text-muted);">Setlist/Member</span>
+                        <strong id="modal-sts" style="color:var(--primary);">-</strong>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; font-size:0.9rem;">
+                        <span style="color:var(--text-muted);">Harga Tiket</span>
+                        <strong id="modal-price" style="color:#fbbf24;">IDR 0</strong>
+                    </div>
+                </div>
+
+                <div style="margin-bottom:20px;">
+                    <span style="font-size:0.8rem; text-transform:uppercase; letter-spacing:1px; color:var(--text-muted); font-weight:700;">Deskripsi</span>
+                    <p id="modal-desc" style="color:#ecfdf5; font-size:0.95rem; line-height:1.6; margin-top:5px; white-space: pre-wrap;">-</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="app-container" class="main-layout hidden">
+        
+        <nav class="glass-nav">
+            <div class="nav-brand">
+                <img src="assets/images/logo.png" alt="Logo">
+            </div>
+            <div class="nav-right">
+                <div class="timer-pill">
+                    <i class="fas fa-moon"></i>
+                    <span id="header-duration">Loading...</span>
+                </div>
+            </div>
+        </nav>
+
+        <main class="content-grid">
+            <div class="video-column">
+                <div id="player-wrapper" class="player-frame shadow-glow">
+                    <video id="player" playsinline controls></video>
+                    
+                    <div id="initial-overlay" class="video-overlay">
+                        <div class="spinner-winter"></div>
+                        <h3>MENGHUBUNGKAN</h3>
+                        <p>Menyiapkan koneksi aman...</p>
+                    </div>
+
+                    <div id="countdown-overlay" class="video-overlay hidden">
+                        <div class="waiting-icon"><i class="fas fa-hourglass-half"></i></div>
+                        <h3>SHOW BELUM DIMULAI</h3>
+                        <p>Menunggu Server show dimulai...</p>
+                        
+                        <div id="countdown-timer" class="timer-box-container">
+                            <div class="time-unit"><b id="cd-days">0</b><span>HARI</span></div>
+                            <div class="time-unit"><b id="cd-hours">0</b><span>JAM</span></div>
+                            <div class="time-unit"><b id="cd-minutes">0</b><span>MNT</span></div>
+                            <div class="time-unit"><b id="cd-seconds">0</b><span>DTK</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stream-info-bottom glass-panel mt-3">
+                    <div class="info-left">
+                        <img src="assets/images/logo.png" class="channel-avatar">
+                        <div class="text-meta">
+                            <h3 id="show-title-bottom">Menunggu Sinyal...</h3>
+                            <p id="artist-name-bottom">Hanabira48 Ramadan Stream</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-right">
+                        <div class="viewer-badge">
+                            <i class="fas fa-eye"></i> 
+                            <span id="viewer-count-display">0</span>
+                        </div>
+                        <span class="live-badge">LIVE <i class="fas fa-circle"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="sidebar-column sidebar">
+                <div class="glass-panel sidebar-frame">
+                    <div class="tabs-header">
+                        <button class="tab-btn active" data-target="chat-content">
+                            <i class="fas fa-comments"></i> Live Chat
+                        </button>
+                        <button class="tab-btn" data-target="lineup-content">
+                            <i class="fas fa-users"></i> Lineup
+                        </button>
+                    </div>
+                    
+                    <div id="chat-content" class="tab-content active">
+                        <iframe id="youtube-chat-frame" class="chat-embed" frameborder="0"></iframe>
+                    </div>
+
+                    <div id="lineup-content" class="tab-content">
+                        <div id="lineup-container" class="lineup-grid"></div>
+                    </div>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    
+    <script type="module" src="assets/js/style.js"></script>
+    <script type="module" src="assets/js/player.js"></script>
+
+    <script>
+        const starContainer = document.getElementById('star-container');
+        const maxStars = 50; 
+        function createStar() {
+            if(starContainer.childElementCount > maxStars) return;
+            const s = document.createElement('div');
+            s.classList.add('star-sparkle');
+            s.style.left = Math.random() * 100 + 'vw';
+            s.style.top = Math.random() * 100 + 'vh';
+            const size = Math.random() * 4 + 2 + 'px';
+            s.style.width = size;
+            s.style.height = size;
+            s.style.animationDuration = Math.random() * 3 + 2 + 's';
+            starContainer.appendChild(s);
+            setTimeout(() => { s.remove(); }, 4000);
+        }
+        setInterval(createStar, 150);
+    </script>
+</body>
+</html>

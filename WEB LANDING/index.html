@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HANABIRA48</title>
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1994209926894043" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deepNight: '#020617',
+                        emeraldGold: '#059669',
+                        goldAccent: '#fbbf24',
+                        glass: 'rgba(255, 255, 255, 0.05)',
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Amiri', 'serif'], 
+                    },
+                    screens: {
+                        'xs': '475px',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script src="assets/js/style.js"></script> 
+    
+    <style>
+        body {
+            background: radial-gradient(circle at center top, #064e3b, #022c22, #020617);
+            min-height: 100vh;
+            color: white; 
+        }
+        .font-arabic {
+            font-family: 'Amiri', serif;
+        }
+        .feature-icon-box {
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.2), rgba(0, 0, 0, 0));
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.1);
+        }
+    </style>
+</head>
+<body class="relative text-white antialiased overflow-x-hidden">
+
+    <img src="assets/images/lampu.png" alt="Lampu Ramadan Kanan" class="hidden md:block fixed -top-10 -right-6 md:right-0 w-32 md:w-56 z-50 pointer-events-none lantern-swing drop-shadow-[0_0_20px_rgba(251,191,36,0.4)]">
+    <img src="assets/images/lampu.png" alt="Lampu Ramadan Kiri" class="hidden md:block fixed -top-10 -left-6 md:left-0 w-32 md:w-56 z-50 pointer-events-none lantern-swing drop-shadow-[0_0_20px_rgba(251,191,36,0.4)]" style="animation-delay: 1.5s;">
+
+    <div id="ramadan-container"></div>
+
+    <nav class="fixed w-full z-40 top-0 start-0 glass-panel transition-all duration-300 border-b border-emerald-900/30">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 pt-6 md:pt-4">
+            <a href="#" class="flex items-center space-x-2 md:space-x-3 rtl:space-x-reverse group relative z-50">
+                <i class="fas fa-moon text-goldAccent text-xl animate-pulse"></i>
+                <span class="self-center text-xl md:text-2xl font-bold whitespace-nowrap tracking-wide text-shadow">HANABIRA<span class="text-emerald-400">48</span></span>
+            </a>
+            
+            <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse relative z-50">
+                <button id="mobile-menu-btn" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-emerald-100 rounded-lg md:hidden hover:bg-emerald-800/50 focus:outline-none transition-colors">
+                    <span class="sr-only">Open main menu</span>
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+
+            <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 transition-all duration-300 ease-in-out relative z-50" id="navbar-sticky">
+                <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-emerald-800 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 bg-deepNight/95 md:bg-transparent backdrop-blur-xl md:backdrop-blur-none shadow-xl md:shadow-none">
+                    <li><a href="#home" class="nav-link block py-3 px-4 text-white bg-emerald-700 rounded md:bg-transparent md:text-goldAccent md:p-0" aria-current="page">Beranda</a></li>
+                    <li><a href="#tentang" class="nav-link block py-3 px-4 text-emerald-100 rounded hover:bg-emerald-800/30 md:hover:bg-transparent md:hover:text-emerald-400 md:p-0 transition-colors">Tentang</a></li>
+                    <li><a href="#jadwal" class="nav-link block py-3 px-4 text-emerald-100 rounded hover:bg-emerald-800/30 md:hover:bg-transparent md:hover:text-emerald-400 md:p-0 transition-colors">Jadwal Theater</a></li>
+                    <li><a href="#langganan" class="nav-link block py-3 px-4 text-emerald-100 rounded hover:bg-emerald-800/30 md:hover:bg-transparent md:hover:text-emerald-400 md:p-0 transition-colors">Langganan</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-24 md:pt-20 overflow-hidden z-0">
+        <div class="absolute inset-0 z-[-1]">
+            <img src="https://images.unsplash.com/photo-1552055677-4a18625572a5?q=80&w=2070&auto=format&fit=crop" alt="Ramadan Night" class="w-full h-full object-cover opacity-40 scale-105">
+            <div class="absolute inset-0 bg-gradient-to-b from-deepNight/50 via-deepNight/70 to-deepNight"></div>
+        </div>
+
+        <div class="container mx-auto px-4 md:px-6 text-center z-10 relative mt-10 md:mt-0">
+            <div class="animate-fade-in-down">
+                
+                <div class="flex flex-col items-center gap-2 mb-6">
+                    <span class="inline-block py-1.5 px-4 rounded-full bg-red-900/40 border border-red-500/50 text-red-200 text-[10px] font-bold uppercase tracking-wider backdrop-blur-sm">
+                        <i class="fas fa-exclamation-circle mr-1"></i> Unofficial Fan Platform
+                    </span>
+                    <span class="inline-block py-2 px-5 rounded-full bg-emerald-900/40 border border-emerald-500 text-goldAccent text-xs md:text-sm font-semibold backdrop-blur-sm shadow-[0_0_15px_rgba(16,185,129,0.3)] uppercase tracking-widest">
+                        <i class="fas fa-kaaba mr-2"></i> Ramadan 1447 H
+                    </span>
+                </div>
+                
+                <h1 class="font-arabic text-4xl sm:text-5xl md:text-7xl font-bold mb-4 leading-tight text-white drop-shadow-2xl">
+                    Ngabuburit Bareng
+                </h1>
+                <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold mb-6 leading-tight tracking-tight drop-shadow-2xl">
+                    <span class="gradient-text">OSHI KESAYANGAN</span>
+                </h1>
+                
+                <p class="text-gray-200 text-base md:text-xl mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed font-medium px-2">
+                    Nikmati momen berbuka dengan tontonan Theater LIVE. Kualitas HD, Audio Jernih, dan Kebersamaan Ramadan di HANABIRA48.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 px-4">
+                    <a href="#langganan" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white font-bold rounded-xl shadow-lg shadow-emerald-500/30 transition-all transform hover:scale-105 hover:-translate-y-1 text-center flex items-center justify-center gap-2">
+                        <i class="fas fa-star-and-crescent"></i> Paket Langganan
+                    </a>
+                    <a href="#jadwal" class="w-full sm:w-auto px-8 py-4 glass-panel hover:bg-emerald-900/30 text-white font-bold rounded-xl transition-all border border-emerald-500/30 hover:border-emerald-400 text-center">
+                        Lihat Jadwal
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tentang" class="py-16 relative z-10">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="glass-panel rounded-3xl p-8 md:p-12 mb-12 border-t border-emerald-500/30">
+                <div class="flex flex-col md:flex-row items-start gap-8 md:gap-12">
+                    
+                    <div class="w-full md:w-1/2">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 leading-tight relative z-10">
+                            Apa itu <span class="text-emerald-400">HANABIRA48</span>?
+                        </h2>
+                        <p class="text-gray-300 leading-relaxed text-base md:text-lg mb-6 relative z-10">
+                            HANABIRA48 adalah platform <strong>streaming & komunitas fanmade</strong> yang didedikasikan untuk para fans JKT48. Kami menghadirkan pengalaman menonton pertunjukan teater yang imersif langsung ke layar perangkatmu.
+                        </p>
+                        <p class="text-gray-300 text-sm leading-relaxed relative z-10 mb-8">
+                            Di sini, setiap dukungan bermekaran. Kami menyediakan akses mudah untuk menonton show favoritmu, berdiskusi dengan sesama fans, dan merayakan setiap momen perjalanan para member.
+                        </p>
+
+                        <div class="bg-red-950/40 border border-red-500/20 rounded-xl p-4 relative z-10 backdrop-blur-sm animate-pulse-slow">
+                            <div class="flex items-start gap-3">
+                                <i class="fas fa-exclamation-triangle text-red-500 mt-1 text-lg flex-shrink-0"></i>
+                                <div>
+                                    <h5 class="text-red-400 font-bold text-xs uppercase tracking-wider mb-1">Disclaimer Penting</h5>
+                                    <p class="text-red-200/80 text-xs leading-relaxed">
+                                        Website ini adalah <strong>Fanmade (Tidak Resmi)</strong>. Kami <strong>TIDAK BERAFILIASI</strong> dengan JKT48. Seluruh hak cipta artis milik manajemen resmi.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="w-full md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="feature-icon-box p-6 rounded-2xl border border-emerald-500/10 hover:border-emerald-500/40 transition-all group">
+                            <i class="fas fa-video text-3xl text-goldAccent mb-3 group-hover:scale-110 transition-transform block"></i>
+                            <h3 class="font-bold text-white text-lg">Live Theater HD</h3>
+                            <p class="text-xs text-gray-400 mt-2">Streaming real-time dengan kualitas visual dan audio terbaik tanpa buffering.</p>
+                        </div>
+                        <div class="feature-icon-box p-6 rounded-2xl border border-emerald-500/10 hover:border-emerald-500/40 transition-all group">
+                            <i class="fas fa-history text-3xl text-goldAccent mb-3 group-hover:scale-110 transition-transform block"></i>
+                            <h3 class="font-bold text-white text-lg">Arsip Replay</h3>
+                            <p class="text-xs text-gray-400 mt-2">Ketinggalan live? Tonton ulang show teater favoritmu kapan saja.</p>
+                        </div>
+                        <div class="feature-icon-box p-6 rounded-2xl border border-emerald-500/10 hover:border-emerald-500/40 transition-all group">
+                            <i class="fas fa-users text-3xl text-goldAccent mb-3 group-hover:scale-110 transition-transform block"></i>
+                            <h3 class="font-bold text-white text-lg">Komunitas Fans</h3>
+                            <p class="text-xs text-gray-400 mt-2">Bergabung dengan ribuan fans lainnya di grup VIP yang solid.</p>
+                        </div>
+                        <div class="feature-icon-box p-6 rounded-2xl border border-emerald-500/10 hover:border-emerald-500/40 transition-all group">
+                            <i class="fas fa-gem text-3xl text-goldAccent mb-3 group-hover:scale-110 transition-transform block"></i>
+                            <h3 class="font-bold text-white text-lg">Konten Eksklusif</h3>
+                            <p class="text-xs text-gray-400 mt-2">Dapatkan akses ke konten spesial yang tidak ada di platform publik.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="jadwal" class="py-10 md:py-16 relative z-10 bg-transparent">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start mb-8 md:mb-12">
+                <div class="mb-6 md:mb-0 w-full md:w-2/3">
+                    <h2 class="text-2xl md:text-4xl font-bold text-white mb-2 relative inline-block">
+                        Jadwal Show Ramadan
+                        <div class="absolute -bottom-2 left-0 w-1/3 h-1 bg-goldAccent rounded-full"></div>
+                    </h2>
+                    <p class="text-gray-300 mt-4 text-sm md:text-base">Temani waktu berbukamu dengan penampilan terbaik.</p>
+                </div>
+                <a href="jadwal.html" class="text-goldAccent hover:text-emerald-300 font-semibold group flex items-center text-sm md:text-base transition-colors">
+                    Lihat Semua Jadwal <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform"></i>
+                </a>
+            </div>
+
+            <div id="schedule-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                 <div class="col-span-3 text-center py-10">
+                    <i class="fas fa-circle-notch fa-spin text-emerald-500 text-2xl"></i>
+                    <p class="text-gray-400 text-sm mt-2">Sedang memuat jadwal...</p>
+                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="channel" class="py-12 relative z-10">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="glass-panel rounded-3xl p-8 md:p-10 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 border border-emerald-500/30 bg-emerald-900/20 shadow-2xl">
+                <div class="absolute -right-10 -bottom-10 text-emerald-500/5 text-9xl z-0 pointer-events-none">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                
+                <div class="relative z-10 max-w-2xl">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#25D366]/20 border border-[#25D366]/30 text-[#25D366] text-xs font-bold mb-3 uppercase tracking-wider">
+                        <span class="relative flex h-2 w-2">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-2 w-2 bg-[#25D366]"></span>
+                        </span>
+                        Update Terkini
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white mb-3">
+                        Jangan Lewatkan Info Terbaru!
+                    </h2>
+                    <p class="text-gray-300 text-sm md:text-base leading-relaxed">
+                        Ingin notifikasi jadwal show theater, link streaming, dan update member JKT48 lebih cepat?
+                        Bergabunglah dengan <strong>Saluran WhatsApp Resmi HANABIRA48</strong>. Gratis dan bebas spam!
+                    </p>
+                </div>
+                
+                <div class="relative z-10 w-full md:w-auto flex-shrink-0">
+                    <a href="https://whatsapp.com/channel/0029Vb5QbdY84Om39bHHhq2f" target="_blank" class="flex items-center justify-center gap-3 w-full md:w-auto px-8 py-4 bg-[#25D366] hover:bg-[#128C7E] text-white font-bold rounded-xl shadow-lg shadow-emerald-500/20 transition-all transform hover:scale-105 active:scale-95 group">
+                        <i class="fab fa-whatsapp text-2xl group-hover:animate-bounce"></i>
+                        <span>Gabung Saluran Sekarang</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="langganan" class="py-20 md:py-24 relative z-10 bg-transparent">
+        <div class="container mx-auto px-4 md:px-6 text-center">
+            <span class="text-goldAccent font-arabic text-xl mb-2 block">Berkah Ramadan</span>
+            <h2 class="text-2xl md:text-4xl font-bold text-white mb-4">Paket Langganan Spesial</h2>
+            <p class="text-gray-300 mb-12 max-w-xl mx-auto text-sm md:text-base">Akses eksklusif konten LIVE Theater selama 30 Hari dengan harga terbaik.</p>
+
+            <div class="max-w-lg mx-auto">
+                <div class="glass-panel p-6 md:p-10 rounded-3xl border-t-4 border-goldAccent relative shadow-2xl shadow-emerald-900/50 bg-gradient-to-b from-emerald-900/20 to-transparent flex flex-col z-10 overflow-hidden">
+                    <div class="absolute top-4 right-4 text-goldAccent text-3xl md:text-4xl opacity-40">
+                        
+                    </div>
+                    <div class="absolute -top-0 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-goldAccent to-yellow-600 text-black px-6 py-1.5 rounded-b-xl text-xs md:text-sm font-bold shadow-lg uppercase tracking-wider w-1/2 md:w-auto">
+                        Promo Berkah
+                    </div>
+
+                    <h3 class="text-2xl md:text-3xl font-bold text-white mt-8 md:mt-6">PAKET LANGGANAN</h3>
+                    
+                    <div class="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-3 mb-2 mt-4">
+                        <span class="text-gray-400 line-through text-lg md:text-xl font-semibold">Rp 35.000</span>
+                        <span class="text-4xl md:text-5xl font-bold text-goldAccent">Rp 25.000</span>
+                    </div>
+                    <span class="text-sm md:text-base text-gray-300 font-medium mb-8">/bulan</span>
+                    
+                    <ul class="text-gray-200 text-left space-y-4 md:space-y-5 mb-10 flex-1 px-2 md:px-4 text-sm md:text-base">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-emerald-400 mr-3 text-lg"></i> <strong> Live Theater Streaming 30 Hari</strong></li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-emerald-400 mr-3 text-lg"></i> Kualitas HD Jernih</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-emerald-400 mr-3 text-lg"></i> Akses Replay 7 Hari</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-emerald-400 mr-3 text-lg"></i> Live Chat Seru</li>
+                    </ul>
+                    <a href="form.html" class="block w-full">
+                        <button class="w-full py-3 md:py-4 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white text-base md:text-lg font-bold shadow-lg shadow-emerald-500/40 transition transform hover:scale-105 active:scale-95 border border-emerald-400/20">
+                            Ambil Promo Ini
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-deepNight/90 border-t border-emerald-900/30 pt-12 md:pt-16 pb-8 mt-10 backdrop-blur-md relative z-10">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start mb-8 md:mb-12">
+                <div class="mb-8 md:mb-0 max-w-sm text-center md:text-left mx-auto md:mx-0">
+                    <span class="text-2xl font-bold text-white">HANABIRA<span class="text-emerald-500">48</span></span>
+                    <p class="text-gray-400 mt-4 text-sm leading-relaxed">
+                        Platform komunitas JKT48. Di mana setiap dukungan bermekaran layaknya doa di bulan suci.
+                    </p>
+                </div>
+                
+                <div class="flex flex-col md:flex-row gap-8 md:gap-16 w-full md:w-auto items-center md:items-start">
+                    <div class="text-center md:text-left">
+                        <h4 class="text-white font-bold mb-4 text-goldAccent">Navigasi</h4>
+                        <ul class="space-y-2 text-sm text-gray-400">
+                            <li><a href="#home" class="hover:text-emerald-400 transition">Beranda</a></li>
+                            <li><a href="#tentang" class="hover:text-emerald-400 transition">Tentang</a></li>
+                            <li><a href="#jadwal" class="hover:text-emerald-400 transition">Jadwal</a></li>
+                            <li><a href="#langganan" class="hover:text-emerald-400 transition">Langganan</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-emerald-900/30 my-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="text-center md:text-left text-gray-500 text-xs">
+                    &copy; 2026 HANABIRA48. Edisi Spesial Ramadan. Unofficial Fan Site.
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://wa.me/628567898135" class="text-gray-400 hover:text-emerald-400 transition"><i class="fab fa-whatsapp text-xl"></i></a>
+                    <a href="https://www.instagram.com/hanabira48" class="text-gray-400 hover:text-emerald-400 transition"><i class="fab fa-instagram text-xl"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pocketbase/0.21.1/pocketbase.umd.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
